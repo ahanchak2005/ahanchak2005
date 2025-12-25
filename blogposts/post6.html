@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog posts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ]
+        });"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            <div class="intro-text">
+                <h1>My blog</h1>
+                <p class="tagline"> </p>
+            </div>
+        </header>
+      
+        <div class="colored-box">
+            <h2>Buffon's Needle Problem</h2>
+            <p><strong><span style="color: red">PROBLEM</span>:</strong> <span style="color: blue"> You are about to drop a needle of length $1$ onto a lined floor; the lines of the floor are spaced $1$ unit apart. Show that the needle hits a line with probability </span> $\frac{2}{\pi}$.</p>
+        </div>
+
+        <article class="solution-content">
+            <p><strong><span style="color:green">SOLUTION 1 </span>(with Calculus):</strong> This solution is quite popular and intuitive also. We are holding the needle upright on some point $x$ distance from one line and then we are letting the needle fall. The needle will always randomly fall within a circle of radius $1$ and center at its end attached to the floor. So the probability for a fixed value of $x$ for which the needle will intersect one line will be $P(x) = \frac{1}{2\pi}\left(2\cos^{-1}(x)+2\cos^{-1}(1-x)\right)$. Then for the total probability we integrate on $x$.</p>
+
+            <p>Total Probability:</p>
+            <p>
+                $$\int\limits_0^1 \frac{\cos^{-1}(x)+\cos^{-1}(1-x)}{\pi}\, dx$$
+                $$= \frac{2}{\pi}\int\limits_0^1 \cos^{-1}(x)\,dx$$
+                $$= \frac{2}{\pi}\int\limits_0^{\frac{\pi}{2}} \theta\cdot \sin\theta \, d\theta$$
+                $$= \frac{2}{\pi}\left[\left[-\theta \cos\theta\right]_0^{\pi/2}+\int\limits_0^{\pi/2} \cos\theta\, d\theta\right]$$
+                $$= \frac{2}{\pi}$$
+            </p>
+
+            <hr>
+            <p>The next solution presented was originally done by <span style="color: pink">E. Barbier</span>, in 1860s. This is not only very ingenious and nice but also does not use Calculus.</p>
+            <hr>
+
+            <p><strong><span style="color: green">SOLUTION 2</span>( Without Calculus )</strong>: We restate a more general problem as follows:</p>
+
+            <p><span style="color: orange"><u>Restated Problem</u> </span> : <span style="color: purple"><u>Given a noodle of length $l$ , (e.g. a polygonal needle). What is the expected number of intersections with it and the two lines?</u> </span> </p>
+
+            <p><span style="color: violet"><u>solution of this problem</u></span>: We define $E(l)$ to be the expected number of intersections by a straight needle of length $l$. Now if we break it into two straight needle one with length $x$ and one with $y$ then we can see that number of crossings by the whole is sum of number of crossing by each part and by linearity of expectations, $E(l) = E(x+y) = E(x) + E(y)$.</p>
+
+            <p><strong><u>What is $E(x) ; x\ge 0$?</u></strong></p>
+
+            <p>Now let us focus a bit on this equation $E(x+y) = E(x)+E(y)\, \forall\,x,y\ge0$. Of course it is additive and we know that for two random variables $X\ge Y$, $E(X)\ge E(Y)$ so surely $E(x)$ is monotone for $x\ge 0$. This is <strong>Cauchy's first Functional Equation</strong>!! And so the solution is $E(x) = cx$ where $c=E(1)$.</p>
+
+            <p>So, the expected number of crossings made by a straight needle of length $l$ is its length multiplies by an absolute constant.</p>
+
+            <p>Now if we drop a noodle with a lot of straight pieces total number of crossings will be the sum of crossings by all the individual pieces. So, if the length of the individual pieces are $x_i$ then for the noodle of length $l =\sum\limits_i x_i$ then $E(l) = \sum\limits_i E(x_i) = \sum\limits_i cx_i = cl$.</p>
+
+            <p><strong><u>Finding $c$</u></strong>:</p>
+
+            <p>We first take the circular loop $\Omega$ of Diameter $1$. Now note that as distance between the two lines are $1$ so the loop always intersects with the set of two lines in exactly $2$ points so, expected number of crossings for $\Omega$ denoted by $E(\Omega) = 2$.</p>
+
+            <p>Now we take two regular $n$-gons one inscribing $\Omega$ named $P_n$ and one circumscribing $\Omega$ named $Q_n$. As $\Omega$ is between $P_n, Q_n$, the expected number of crossings will be bounded:</p>
+            
+            <p>$$E(P_n)\ge E(\Omega)\ge E(Q_n)$$
+            $$\implies cl(P_n)\ge 2 \ge cl(Q_n)$$</p>
+
+            <p>Letting $n\rightarrow \infty$, $l(P_n)$ and $l(Q_n)$ converge to the circumference of the circle ($\pi$). By Sandwich theorem:</p>
+
+            <p>$$c\pi\ge 2 \ge c\pi \implies c = 2/\pi$$</p>
+
+            <p><strong><u>Back to the needle from noodle</u>:</strong></p>
+
+            <p>Now For a needle of length $1$ , the probability of more than $1$ crossing is $0$. So, $\text{expected number of crossing } = \text{ probability of one crossing} = c = \frac{2}{\pi}$.</p>
+        </article>
+        <div class = colored-box><p>P.S. In ISIK math club, there was an interesting talk by one of my seniors, Srijan Saha about using this problem to analyze the expected number of real zeroes of a random polynomial which I found SUPER INTERESTING, more on that sometime later.</p>
+</div>
+    </div>
+    
+    </body>
+</html>
