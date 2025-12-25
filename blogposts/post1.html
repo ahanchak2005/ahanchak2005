@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog posts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ]
+    });"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            
+            <div class="intro-text">
+                <h1>My blog</h1>
+                <p class="tagline"> </p>
+            </div>
+        </header>
+      
+        <div class = "colored-box">
+            <h2>My favourite USAMO Problem</h2>
+            <p><span style="color: brown">Problem Statement </span> : <span style="color: blue">Let&nbsp;$n$ be an integer greater than 1. Suppose $2n$&nbsp;points are given in the plane, no three of which are collinear. Suppose&nbsp;$ n$&nbsp;of the given&nbsp;$2n$&nbsp;points are colored blue and the other&nbsp;$n$&nbsp;colored red. A line in the plane is called a&nbsp;<em>balancing line</em>&nbsp;if it passes through one blue and one red point and, for each side of the line, the number of blue points on that side is equal to the number of red points on the same side. Prove that there exist at least two balancing lines.</span></p>
+            
+        </div>
+
+        <p><strong>Solution:</strong> We first enclose the given set of points by a convex polygon that is the minimal convex polygon for which each and every of the given points are either vetex or lie inside the polygon. This polygon has a fancy name , called the "convex hull"( <a href="https://en.wikipedia.org/wiki/Convex_hull_algorithms"><span style="color: red">Here</span></a> are some algorithms to construct the convex hull of a given set of points). Now we say two points $P$ and $Q$ to be compatible to each other if the line through $P$ and $Q$ is a balancing point.</p>
+<p><strong>Case $I$ : The convex hull is not <span style="color: red">mono</span><span style="color: blue">chromatic</span>.</strong><br> Then note that there will exist at least two pairs of adjacent vertices where one point is red and another point is blue (there will be at least two transitions between vertices of two colours). Now join the two points in those pairs by lines and note that the lines are balancing lines as they are adjacent vertices of a convex polygon, at one side there will be $0$ points i.e.0 red and 0 blue points. As there are two such pairs of compatible points so there are two such balancing lines at least.</p>
+<p><strong>Case $II$: The convex hull is <span style="color: red">monochromatic</span> wlog, say, red.</strong><br>Now fix any vertex $A$ of the convex hull. Now we shall take a variable line through $A$ and will "sweep" it through $n$ blue points. Define a function having domain on the set of $n$ blue points, $$f(P):= \text{number of red points on the right side of the line } AP- \text{number of blue points on the right side of the line } AP$$. Now note that as the convex hull is red and all the blue points are inside it, we can choose a minimal blue point $B_1$ and a maximal blue point $B_n$ for $A$ so that in this sweeping process $B_1$ comes first and $B_n$ comes last Infact we can label all the blue points as $B_i$s where $B_i$ s are consecutive blue points. ( A formal argument can be fix one side of the convex hull through $A$ say $AA'$ and measure the angle $\angle PAA'$ for the blue points.) <strong>Now note that $f(B_1)$ and $f(B_n)$ are of opposite sign for their extremality. </strong>(!!) Now when we sweep from a blue point $B_k$ to the next blue point $B_{k+1}$ the value of the function can decrease by at most $1$ as $B_k$ and $B_{k+1}$ s are consecutive blue points. (It may increase although but when it decreases it will decrease by $1$). Now as it is positive somewhere and negative somewhere so it has to be $0$ somewhere. (This technique also has a fancy name called "Discrete IVP" but name should not matter)So, there has to be some compatible point $M$ for vertex $A$ for which $f(M)=0$. and as total number of blue points and red points are same so considering only one side suffices. And thus a balancing line passing through $A$ exists. Now for each vertex of the monochromatic convex hull atleast one balancing line exists. And so there are atleast three balancing lines in this case.</p>
+        
+      
+
+</body>
+</html>

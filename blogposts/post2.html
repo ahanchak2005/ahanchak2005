@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog posts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ]
+    });"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            
+            <div class="intro-text">
+                <h1>My blog</h1>
+                <p class="tagline"> </p>
+            </div>
+        </header>
+      
+        <div class = "colored-box">
+            <h2>My favourite USAMO Problem</h2>
+             <p><strong><span style="color: red">PROBLEM</span>:</strong>  <span style="color: blue">Show that $\binom {2k}{k} = \frac{2}{\pi}\int\limits_0^{\frac{\pi}{2}} (2 \sin\theta)^{2k}\,d\theta$</span></p>
+           
+        </div>
+
+     <p><strong>A SOLUTION:</strong> There are some very common ways by using the reduction methods( it is so routine that there is practice of memorizing a formula of Walli's Product to quickly evaluate this kind of Integrals, and in fact for my JEE, I did it too) But this post is going to be a prequel of the next post. The tool for that problem is going to be made through this problem.</p>
+<p>So, first note that $(x+\frac{1}{x})^{2k} = \binom{2k}{k}+\sum\limits_{\text{for suitable } m>0} (x^{2m}+x^{-2m})$</p>
+<p>(The powers are definitely even because the power of x and power of $\frac{1}{x}$ are of same parity as their sum is even)</p>
+<p>Now note that by changing the $\theta$ by $\pi/2-\theta$ we can say that $\int\limits_0^{\frac{\pi}{2}} \left( 2 \sin\theta\right)^{2k}\,d\theta=\int\limits_0^{\frac{\pi}{2}} \left( 2 \cos\theta\right)^{2k}\,d\theta$.</p>
+<p>Now note that $e^{i\theta}+e^{-i\theta} = 2 \cos\theta$. Now we shall jump to the problem with the things we have built so far.</p>
+<p>
+$$\int\limits_0^{\frac{\pi}{2}} (2 \sin\theta)^{2k}\,d\theta$$
+$$=\int\limits_0^{\frac{\pi}{2}} (2 \cos\theta)^{2k}\,d\theta$$
+$$=\int\limits_{0}^{\pi/2} (e^{i\theta}+e^{-i\theta})^{2k}\,d\theta$$
+$$= \int\limits_0^{\pi/2} \sum\limits_{\text{for suitable } m>0}((e^{i\theta})^{2m}+(e^{-i\theta})^{2m})\,d\theta+\binom{2k}{k}\cdot \frac{\pi}{2}$$
+$$= \sum\limits_{\text{for suitable } m>0}\left(\int\limits_0^{\pi/2} ((e^{i\theta})^{2m}+(e^{-i\theta})^{2m})\right)\,d\theta+\binom{2k}{k}\cdot \frac{\pi}{2}$$
+$$=\sum\limits_{\text{for suitable } m>0} \left( \left[ \frac{e^{2mi\theta}}{2mi}-\frac{e^{-2mi\theta}}{2mi}\right]_0^{\pi/2}\right)+\binom{2k}{k}\cdot \frac{\pi}{2}$$
+$$={ \sum\limits_{\text{for suitable } m>0}\left(\frac{i^{2m}-1-(-i)^{2m}+1}{2mi}\right)}+\binom{2k}{k}\cdot \frac{\pi}{2}$$
+$$=0+\binom{2k}{k}\cdot \frac{\pi}{2}=\boxed{\binom{2k}{k}\cdot \frac{\pi}{2}}$$
+</p>
+<p>Hence we have the desired result $\boxed{\binom {2k}{k} = \frac{2}{\pi}\int\limits_0^{\frac{\pi}{2}} \left( 2 \sin\theta\right)^{2k}\,d\theta}$</p></body>
+</html>

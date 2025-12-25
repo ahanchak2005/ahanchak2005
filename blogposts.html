@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog posts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ]
+    });"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            
+            <div class="intro-text">
+                <h1>My blog</h1>
+                <p class="tagline"> </p>
+            </div>
+        </header>
+          
+        <div class = colored-box>
+            <h2>Combinatorics in disguise part 2</h2>
+            <p><strong><span style="color: red">PROBLEM</span>:</strong> <span style="color: blue">For a positive integer $n$ , denote by $ S(n)$ the number of choices of the sign $ +$ or $ -$ such that $ \pm 1 \pm 2 \pm... \pm n = 0$. Show that </span></p>
+            <p class="has-text-align-center">$S(n) = \frac{2^{n-1}}{\pi} \int\limits_0^{2\pi} \cos(t) \cos(2t) ... \cos(nt)\, dt$</p>
+            <a href="blogposts/post3.html">Click here to see the solution</a>
+        </div>
+        <div class = "colored-box">
+            <h2>Combinatorics in disguise part 1</h2>
+            <p><strong><span style="color: red">PROBLEM</span>:</strong>  <span style="color: blue">Show that $\binom {2k}{k} = \frac{2}{\pi}\int\limits_0^{\frac{\pi}{2}} (2 \sin\theta)^{2k}\,d\theta$</span></p>
+            <a href="blogposts/post2.html">Click here to see the solution</a>
+        </div>
+
+        <div class = "colored-box">
+            <h2>My favourite USAMO Problem</h2>
+            <p><span style="color: brown">Problem Statement </span> : <span style="color: blue">Let&nbsp;$n$ be an integer greater than 1. Suppose $2n$&nbsp;points are given in the plane, no three of which are collinear. Suppose&nbsp;$ n$&nbsp;of the given&nbsp;$2n$&nbsp;points are colored blue and the other&nbsp;$n$&nbsp;colored red. A line in the plane is called a&nbsp;<em>balancing line</em>&nbsp;if it passes through one blue and one red point and, for each side of the line, the number of blue points on that side is equal to the number of red points on the same side. Prove that there exist at least two balancing lines.</span></p>
+            <a href="blogposts/post1.html">Click here to see the solution</a>
+        </div>
+
+        
+      
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog posts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ]
+    });"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            
+            <div class="intro-text">
+                <h1>My blog</h1>
+                <p class="tagline"> </p>
+            </div>
+        </header>
+      
+        <div class = colored-box>
+            <h2>Combinatorics in disguise part 2</h2>
+            <p><strong><span style="color: red">PROBLEM</span>:</strong> <span style="color: blue">For a positive integer $n$ , denote by $ S(n)$ the number of choices of the sign $ +$ or $ -$ such that $ \pm 1 \pm 2 \pm... \pm n = 0$. Show that </span></p>
+            <p class="has-text-align-center">$S(n) = \frac{2^{n-1}}{\pi} \int\limits_0^{2\pi} \cos(t) \cos(2t) ... \cos(nt)\, dt$</p>
+            
+        </div>
+
+   <p><strong><u>SOLUTION</u>:</strong> The problem is quite a bit peculiar because it connects a counting thing with a very odd-looking integral. Here is the solution which is almost a sequel of this post.</p>
+<p>First we use a generating function technique to compute $S(n)$.</p>
+<p>Note that $S(n) = \text{coeff of }x^0 \text{ in } (x+\frac{1}{x})(x^2+\frac{1}{x^2})...(x^n+\frac{1}{x^n})$. Now for all $m\neq 0$ we can see if $x^a$ is present in the expansion of this expression then obviously $x^{-a}$ is present too. Now note that $2 \cos(kt) = e^{ikt}+e^{-ikt}$.<br><br>Now</p>
+<p>
+$$\int\limits_0^{2\pi} \cos(t) \cos(2t) \dots \cos(nt)\, dt$$
+$$= \int\limits_0^{2\pi} \prod\limits_{k=1}^n \left(\frac{e^{ikt}+e^{-ikt}}{2}\right) \, dt$$
+$$= \frac{1}{2^n}\int \limits_0^{2\pi} \left[ \sum\limits_{\text{for suitable } m>0} (e^{imt}+e^{-imt})+S(n)\right]\,dt$$
+$$= \frac{1}{2^n}\left(2\pi S(n) +\sum\limits_{\text{for suitable } m>0}\left[\int \limits_0^{2\pi} (e^{imt}+e^{-imt}) \,dt\right] \right)$$
+$$= \frac{1}{2^n}\left(2\pi S(n) +\sum\limits_{\text{for suitable } m>0}\left[\left[\frac{e^{imt}}{im}-\frac{e^{-imt}}{im}\right]_0^{2\pi}\right] \right)$$
+$$= \frac{1}{2^n}\left(2\pi S(n) +\sum\limits_{\text{for suitable } m>0}\left[\frac{(e^{2\pi i })^m -1 -(e^{-2\pi i })^m+1}{im}\right] \right)$$
+$$= \frac{1}{2^n}\left(2\pi S(n) +\sum\limits_{\text{for suitable } m>0}(0) \right)$$
+$$= \frac{1}{2^n}\left(2\pi S(n) \right)$$
+$$= \frac{1}{2^{n-1}} \pi S(n)$$
+$$\implies \boxed{S(n) = \frac{2^{n-1}}{\pi} \int\limits_0^{2\pi} \cos(t) \cos(2t) \dots \cos(nt)\, dt}$$
+</p>
+<p><strong><span style="color: green">REMARK</span>:</strong> <u> Note that if $n = 4k+1 \text{ or } 4k+2$ then note that there are odd many odd numbers so the sum can never be $0$ as it always will be odd. Hence, we will have the integral $0$ for such $n$</u></p></body>
+</html>
